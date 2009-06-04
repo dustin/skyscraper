@@ -96,7 +96,7 @@ class TranslateCommand(BaseCommand):
         form = data_form.Form(formType="result", title='Your Translations')
 
         for k,v in sorted(responses.items()):
-            form.addField(data_form.Field(var=k, value=v))
+            form.addField(data_form.Field(var=k, value=v, fieldType='text-multi'))
 
         return self.genFormCmdResponse(iq, cmd, form)
 
