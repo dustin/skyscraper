@@ -10,6 +10,8 @@ from wokkel.xmppim import AvailablePresence
 import xmpp_commands
 import time
 
+msg_prot = None
+
 class TranslateMessageProtocol(MessageProtocol):
 
     def __init__(self, jid):
@@ -29,6 +31,9 @@ class TranslateMessageProtocol(MessageProtocol):
             #for a in c.aliases:
                 #self.commands[a] = c
         log.msg("Loaded commands: %s" % `sorted(self.commands.keys())`)
+
+        global msg_prot
+        msg_prot = self
 
     def connectionLost(self, reason):
         log.msg('Disconnected!')
