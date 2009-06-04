@@ -7,8 +7,10 @@ sys.path.insert(0, "lib")
 from twisted.application import service
 from twisted.words.protocols.jabber import jid
 from wokkel.client import XMPPClient
+from wokkel.disco import DiscoHandler
 
 from protocol import TranslateMessageProtocol, TranslatePresenceProtocol
+import adhoc_commands
 
 application = service.Application("translate")
 
@@ -22,5 +24,8 @@ protocols = [TranslateMessageProtocol,
 for p in protocols:
     handler=p(j)
     handler.setHandlerParent(xmppclient)
+
+DiscoHandler().setHandlerParent(xmppclient)
+adhoc_commands.AdHocHandler().setHandlerParent(xmppclient)
 
 xmppclient.setServiceParent(application)
