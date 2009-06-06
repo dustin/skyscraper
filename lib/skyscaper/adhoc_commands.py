@@ -74,9 +74,7 @@ class TranslateCommand(BaseCommand):
         super(TranslateCommand, self).__init__('translate',
                                                'Translate some text')
 
-        # I'd prefer mapping to the language code, but that's not
-        # currently supported by the translation code.
-        langopts = [data_form.Option(l[0], l[0])
+        langopts = [data_form.Option(l[1], l[0])
                     for l in sorted(Language.languages.items())]
 
         self.infield = data_form.Field(var='in', fieldType='list-single',
