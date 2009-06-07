@@ -104,7 +104,7 @@ class TranslateCommand(BaseCommand):
         louts = set(form.fields['out'].values)
         text = form.fields['text'].value.encode('utf-8')
 
-        log.msg("From %s to %s:  %s" % (lin, louts, text))
+        log.msg(u"From %s to %s:  %s" % (lin, louts, unicode(text)))
 
         deferreds = []
         responses = {}
